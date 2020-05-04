@@ -1,4 +1,4 @@
-import { GET_LOGS, SET_LOADING, LOGS_ERROR, ADD_LOG, DELETE_LOG} from './types';
+import { GET_LOGS, SET_LOADING, LOGS_ERROR, ADD_LOG, DELETE_LOG, UPDATE_LOG, SET_CURRENT, CLEAR_CURRENT} from './types';
 import axios from 'axios';
 //Also can be written this way but below code is more refactored.
 //export const getLogs = () => {
@@ -64,6 +64,45 @@ export const deleteLog = (id) => async dispatch => {
         });
     }
 };
+
+// Update Log
+export const updateLog = (log) => async dispatch => {
+    try {
+        setLoading();
+        const res = await fetch(`/logs/${log.id}`,{
+            method: 'PUT',
+            body: JSON.stringify(log),
+            headers: {
+                'Content-Type':'application/json'
+            }
+        });
+        const data = await res.json();
+        dispatch({
+            type: UPDATE_LOG,
+            payload: data
+        });
+    } catch (err) {
+        dispatch({
+            type: LOGS_ERROR,
+            payload: err.response.data
+        });
+    }
+};
+
+// Set Current
+export const setCurrent = log => {
+    return {
+        type: SET_CURRENT,
+        payload: log
+    }
+};
+
+// Clear Current
+export const clearCurrent = () => {
+    return {
+        type: CLEAR_CURRENT
+    }
+}
 
 export const setLoading = () => {
     return {
