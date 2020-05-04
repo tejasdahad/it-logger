@@ -1,4 +1,4 @@
-import { GET_LOGS, SET_LOADING, LOGS_ERROR, ADD_LOG, DELETE_LOG, UPDATE_LOG, SET_CURRENT, CLEAR_CURRENT} from './types';
+import { GET_LOGS, SET_LOADING, LOGS_ERROR, ADD_LOG, DELETE_LOG, UPDATE_LOG, SET_CURRENT, CLEAR_CURRENT, SEARCH_LOGS} from './types';
 import axios from 'axios';
 //Also can be written this way but below code is more refactored.
 //export const getLogs = () => {
@@ -89,6 +89,23 @@ export const updateLog = (log) => async dispatch => {
     }
 };
 
+// Search server logs
+export const searchLogs = (text) => async dispatch => {
+    try {
+        setLoading();
+        const res = await fetch(`/logs?q=${text}`);
+        const data = await res.json();
+        dispatch({
+            type: SEARCH_LOGS,
+            payload: data
+        });
+    } catch (err) {
+        dispatch({
+            type: LOGS_ERROR,
+            payload: err.response.data
+        });
+    }
+}
 // Set Current
 export const setCurrent = log => {
     return {
