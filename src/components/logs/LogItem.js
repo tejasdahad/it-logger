@@ -1,7 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { deleteLog } from '../../actions/logActions';
+import { connect } from 'react-redux';
+import M from 'materialize-css/dist/js/materialize.min.js';
 
-const LogItem = ({log}) => {
+const LogItem = ({log, deleteLog}) => {
+
+    const onDelete = () => {
+        deleteLog(log.id);
+        M.toast({html: 'Log deleted'});
+    }
+
     return (
         <li className="collection-item">
            <div>
@@ -13,7 +22,7 @@ const LogItem = ({log}) => {
                  last updated by{' '}<span className='black-text'>{log.tech}</span>
     {' '}on{'  '}{log.date}
                 </span>
-                <a className="secondary-content" href="#!">
+                <a onClick={onDelete} className="secondary-content" href="#!">
                     <i className="material-icons grey-text">delete</i>
                 </a>
             </div> 
@@ -22,7 +31,8 @@ const LogItem = ({log}) => {
 }
 
 LogItem.propTypes = {
-    log: PropTypes.object.isRequired
+    log: PropTypes.object.isRequired,
+    deleteLog: PropTypes.func.isRequired
 }
 
-export default LogItem;
+export default connect(null, {deleteLog})(LogItem);

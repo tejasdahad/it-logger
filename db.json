@@ -1,42 +1,42 @@
 {
-    "logs": [
-        {
-            "id":1,
-            "message": "Station 026 fixed by Sam",
-            "attention":false,
-            "date":"03-02-2020",
-            "tech": "Tejas Dahad"
-        },
-        {
-            "id":2,
-            "message": "Station 027 broke",
-            "attention":true,
-            "date":"03-02-2020",
-            "tech": "Madhur Dhoot"
-        },
-        {
-            "id":3,
-            "message": "Station 028 fixed by Jinx",
-            "attention":false,
-            "date":"03-02-2020",
-            "tech": "Jinx Brahman"
-        }
-    ],
-    "techs": [
-        {
-            "id":1,
-            "firstName":"Tejas",
-            "lastName": "Dahad"
-        },
-        {
-            "id":2,
-            "firstName":"Madhur",
-            "lastName": "Dhoot"
-        },
-        {
-            "id":3,
-            "firstName":"Jinx",
-            "lastName": "Brahman"
-        }
-    ]
+  "logs": [
+    {
+      "message": "Hard Drive 1122 broke down",
+      "attention": true,
+      "tech": "Tejas Dahad",
+      "date": "2020-05-04T10:03:33.665Z",
+      "id": 1
+    },
+    {
+      "message": "Station 026 fixed",
+      "attention": false,
+      "tech": "Madhur Dhoot",
+      "date": "2020-05-04T10:03:50.216Z",
+      "id": 2
+    },
+    {
+      "message": "Workstation 908 broken",
+      "attention": true,
+      "tech": "Jinx Brahman",
+      "date": "2020-05-04T10:28:36.471Z",
+      "id": 3
+    }
+  ],
+  "techs": [
+    {
+      "id": 1,
+      "firstName": "Tejas",
+      "lastName": "Dahad"
+    },
+    {
+      "id": 2,
+      "firstName": "Madhur",
+      "lastName": "Dhoot"
+    },
+    {
+      "id": 3,
+      "firstName": "Jinx",
+      "lastName": "Brahman"
+    }
+  ]
 }
